@@ -14,9 +14,9 @@ var requestHandler = function requestHandler(req, res) {
   if (url === "/") {
     res.write('<html>');
     res.write('<head><title>Greetings!</title></head>');
-    res.write('<body><h1>Greetings! Please enter your username.</h1><form action="/create-user" method="POST"><input name="username" type="text"><button type="submit">Send</button></form><ul>');
+    res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Greetings! Please enter your username.</h1><form action="/create-user" method="POST"><input name="username" type="text" placeholder="Alpha-numeric only." style="border-radius: 5px; margin: 1em; padding: .5em;"><button type="submit" style="font-family: sans-serif; padding: .5em; border-radius: 5px;">Submit</button></form><ul>');
     userNames.forEach(function (user) {
-      res.write("<li>".concat(user, "</li>"));
+      res.write("<li style=\"list-style-type: none;\">".concat(user, "</li>"));
     });
     res.write('</ul></body>');
     res.write('</html>');
@@ -38,9 +38,9 @@ var requestHandler = function requestHandler(req, res) {
       res.setHeader('Content-Type', 'text/html');
       res.write('<html>');
       res.write('<head><title>Prove01 - Nanci Newell</title></head>');
-      res.write('<body><h1>Users - Just parsed!</h1><ul>');
+      res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Users - Just parsed!</h1><ul>');
       userNames.forEach(function (user) {
-        res.write("<li>".concat(user, "</li>"));
+        res.write("<li style=\"list-style-type: none;\">".concat(user, "</li>"));
       });
       res.write('</ul></body>');
       res.write('</html>');
@@ -57,9 +57,9 @@ var requestHandler = function requestHandler(req, res) {
   if (url === "/users") {
     res.write('<html>');
     res.write('<head><title>Users</title></head>');
-    res.write('<body><h1>Users</h1><ul>');
+    res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Users</h1><ul>');
     userNames.forEach(function (user) {
-      res.write("<li>".concat(user, "</li>"));
+      res.write("<li style=\"list-style-type: none;\">".concat(user, "</li>"));
     });
     res.write('</ul></body>');
     res.write('</html>');
@@ -69,9 +69,9 @@ var requestHandler = function requestHandler(req, res) {
   res.setHeader('Content-Type', 'text/html');
   res.write('<html>');
   res.write('<head><title>Prove01 - Nanci Newell</title></head>');
-  res.write('<body><h1>Users</h1><ul>');
+  res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Users</h1><ul>');
   userNames.forEach(function (user) {
-    res.write("<li>".concat(user, "</li>"));
+    res.write("<li style=\"list-style-type: none;\">".concat(user, "</li>"));
   });
   res.write('</ul></body>');
   res.write('</html>');
