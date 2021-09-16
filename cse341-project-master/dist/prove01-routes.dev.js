@@ -25,14 +25,12 @@ var requestHandler = function requestHandler(req, res) {
   if (url === "/create-user" && method === "POST") {
     var body = [];
     req.on('data', function (chunk) {
-      //console.log(chunk);
-      body.push(chunk); //return res.end();
+      body.push(chunk);
     });
     return req.on('end', function () {
       var parsedBody = Buffer.concat(body).toString();
       var user = parsedBody.split('=')[1];
       userNames.push(user);
-      console.log(userNames);
       listUsers(res, "Users");
       res.end();
     });

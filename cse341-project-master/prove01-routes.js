@@ -21,16 +21,12 @@ const requestHandler = (req, res) => {
     if(url === "/create-user" && method=== "POST"){
         const body = [];
         req.on('data', (chunk) => {
-            //console.log(chunk);
             body.push(chunk);
-            
-            //return res.end();
         });
         return req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
             const user = parsedBody.split('=')[1];
             userNames.push(user);
-            console.log(userNames);
             listUsers(res, "Users");
             res.end();   
         });
