@@ -1,20 +1,19 @@
 "use strict";
 
-//const fs = require('fs');
-var userNames = ["mreynolds", "zwashburne", "hwashburne", "jcobb", "kfrye"]; //fs.writeFile('users.txt', startingUsers);
+var userNames = [];
 
 var requestHandler = function requestHandler(req, res) {
   var url = req.url;
   var method = req.method;
 
   if (userNames.length == 0) {
-    body.push("mreynolds", "zwashburne", "hwashburne", "jcobb", "kfrye");
+    userNames.push("mreynolds", "zwashburne", "hwashburne", "jcobb", "kfrye");
   }
 
   if (url === "/") {
     res.write('<html>');
     res.write('<head><title>Greetings!</title></head>');
-    res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Greetings! Please enter your username.</h1><form action="/create-user" method="POST"><input name="username" type="text" placeholder="Alpha-numeric only." style="border-radius: 5px; margin: 1em; padding: .5em;"><button type="submit" style="font-family: sans-serif; padding: .5em; border-radius: 5px;">Submit</button></form><ul>');
+    res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1 style="line-height: 1.75em;">Greetings! Please enter your username.</h1><form action="/create-user" method="POST"><input name="username" type="text" placeholder="Alpha-numeric only." style="border-radius: 5px; margin: 1em; padding: .5em;"><button type="submit" style="font-family: sans-serif; padding: .5em; border-radius: 5px;">Submit</button></form><ul>');
     userNames.forEach(function (user) {
       res.write("<li style=\"list-style-type: none;\">".concat(user, "</li>"));
     });
@@ -24,59 +23,41 @@ var requestHandler = function requestHandler(req, res) {
   }
 
   if (url === "/create-user" && method === "POST") {
-    var _body = [];
+    var body = [];
     req.on('data', function (chunk) {
       //console.log(chunk);
-      _body.push(chunk); //return res.end();
-
+      body.push(chunk); //return res.end();
     });
     return req.on('end', function () {
-      var parsedBody = Buffer.concat(_body).toString();
+      var parsedBody = Buffer.concat(body).toString();
       var user = parsedBody.split('=')[1];
       userNames.push(user);
       console.log(userNames);
-      res.setHeader('Content-Type', 'text/html');
-      res.write('<html>');
-      res.write('<head><title>Prove01 - Nanci Newell</title></head>');
-      res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Users - Just parsed!</h1><ul>');
-      userNames.forEach(function (user) {
-        res.write("<li style=\"list-style-type: none;\">".concat(user, "</li>"));
-      });
-      res.write('</ul></body>');
-      res.write('</html>');
+      listUsers(res, "Users");
       res.end();
-      /*fs.writeFile('users.txt', users, err => {
-          res.statusCode = 302; 
-          res.setHeader("Location", "/");
-          return res.end();
-      });
-      }); */
     });
   }
 
   if (url === "/users") {
-    res.write('<html>');
-    res.write('<head><title>Users</title></head>');
-    res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Users</h1><ul>');
-    userNames.forEach(function (user) {
-      res.write("<li style=\"list-style-type: none;\">".concat(user, "</li>"));
-    });
-    res.write('</ul></body>');
-    res.write('</html>');
+    listUsers(res, "Users");
     return res.end();
   }
 
+  listUsers(res, "That wasn't a valid route, but you can see the users here.");
+  res.end();
+};
+
+function listUsers(res, h1) {
   res.setHeader('Content-Type', 'text/html');
   res.write('<html>');
   res.write('<head><title>Prove01 - Nanci Newell</title></head>');
-  res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Users</h1><ul>');
+  res.write("<body style='font-family: sans-serif; line-height: 1.5em;'><h1 style='line-height: 1.75em;'>".concat(h1, "</h1><ul>"));
   userNames.forEach(function (user) {
     res.write("<li style=\"list-style-type: none;\">".concat(user, "</li>"));
   });
   res.write('</ul></body>');
   res.write('</html>');
-  res.end();
-};
+}
 
 module.exports = requestHandler; //Now can require requestHandler on server.js
 
