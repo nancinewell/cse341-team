@@ -1,28 +1,24 @@
-//const fs = require('fs');
-
-let userNames = ["mreynolds", "zwashburne", "hwashburne", "jcobb", "kfrye"];
-
-//fs.writeFile('users.txt', startingUsers);
+let userNames = [];
 
 const requestHandler = (req, res) => {
     const url = req.url;
     const method = req.method;
     
     if(userNames.length == 0){
-        body.push("mreynolds", "zwashburne", "hwashburne", "jcobb", "kfrye");
+        userNames.push("mreynolds", "zwashburne", "hwashburne", "jcobb", "kfrye");
     }
 
     if(url==="/"){
         res.write('<html>');
         res.write('<head><title>Greetings!</title></head>');
-        res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Greetings! Please enter your username.</h1><form action="/create-user" method="POST"><input name="username" type="text" placeholder="Alpha-numeric only." style="border-radius: 5px; margin: 1em; padding: .5em;"><button type="submit" style="font-family: sans-serif; padding: .5em; border-radius: 5px;">Submit</button></form><ul>');
+        res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1 style="line-height: 1.75em;">Greetings! Please enter your username.</h1><form action="/create-user" method="POST"><input name="username" type="text" placeholder="Alpha-numeric only." style="border-radius: 5px; margin: 1em; padding: .5em;"><button type="submit" style="font-family: sans-serif; padding: .5em; border-radius: 5px;">Submit</button></form><ul>');
         userNames.forEach(user => {res.write(`<li style="list-style-type: none;">${user}</li>`);});  
         res.write('</ul></body>');
         res.write('</html>');
         return res.end();
     }
 
-    if(url=== "/create-user" && method=== "POST"){
+    if(url === "/create-user" && method=== "POST"){
         const body = [];
         req.on('data', (chunk) => {
             //console.log(chunk);
@@ -35,42 +31,27 @@ const requestHandler = (req, res) => {
             const user = parsedBody.split('=')[1];
             userNames.push(user);
             console.log(userNames);
-            res.setHeader('Content-Type', 'text/html');
-            res.write('<html>');
-            res.write('<head><title>Prove01 - Nanci Newell</title></head>');
-            res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Users - Just parsed!</h1><ul>');
-            userNames.forEach(user => {res.write(`<li style="list-style-type: none;">${user}</li>`);});
-            res.write('</ul></body>');
-            res.write('</html>');
-            res.end();
-            /*fs.writeFile('users.txt', users, err => {
-                res.statusCode = 302; 
-                res.setHeader("Location", "/");
-                return res.end();
-            });
-        }); */       
-    });
+            listUsers(res, "Users");
+            res.end();   
+        });
 }
-    if(url=== "/users"){
-        res.write('<html>');
-        res.write('<head><title>Users</title></head>');
-        res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Users</h1><ul>');
-        userNames.forEach(user => {
-            res.write(`<li style="list-style-type: none;">${user}</li>`);
-        });  
-        res.write('</ul></body>');
-        res.write('</html>');
+    if(url === "/users"){
+        listUsers(res, "Users");
         return res.end();        
     }
 
+    listUsers(res, "That wasn't a valid route, but you can see the users here.");
+    res.end();
+}
+
+function listUsers(res, h1){
     res.setHeader('Content-Type', 'text/html');
     res.write('<html>');
     res.write('<head><title>Prove01 - Nanci Newell</title></head>');
-    res.write('<body style="font-family: sans-serif; line-height: 1.5em;"><h1>Users</h1><ul>');
+    res.write(`<body style='font-family: sans-serif; line-height: 1.5em;'><h1 style='line-height: 1.75em;'>${h1}</h1><ul>`);
     userNames.forEach(user => {res.write(`<li style="list-style-type: none;">${user}</li>`);});
     res.write('</ul></body>');
     res.write('</html>');
-    res.end();
 }
 
 module.exports = requestHandler; //Now can require requestHandler on server.js
@@ -90,3 +71,4 @@ module.exports = {
     exports.handler = requestHandler;
     exports.someText = "And I'm still exporting multiple things at once."
 }*/
+
