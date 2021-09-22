@@ -1,0 +1,18 @@
+1. Copy and paste the URL for your source code repository (e.g., GitHub): https://github.com/nancinewell/cse341-team
+
+3. Briefly list and describe the elements of the application that are functioning: Form submits user input, which directs the route. 4 routes are handled ("/", "/create-user", "/users", and a default). User page is updated with new user information after being submitted. 
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly: None to my knowledge.
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment: I don't know about "cool", but the thing I stumbled on which has me currently most curious is why a css sheet won't style the page even if I include it in the res.write('<head><link rel="stylesheet" media="screen" href="styles.css"></head>');
+
+6. If you could change this assignment to be more effective or helpful, what would you change? I found this assignment pleasantly challenging. I had all the tools I needed to complete it, but needed to take the time to better understand what everything was doing in order to complete it. I would, however, update the rubrics on the assignment instructions page and the submission page to be a single, comprehensive rubric. Having two rubrics for an assignment was a little frustrating.
+
+7. Please select the category you feel best describes your assignment: 5
+   1 - Some attempt was made
+   2 - Developing, but significantly deficient
+   3 - Slightly deficient, but still mostly adequate
+   4 - Meets requirements
+   5 - Shows creativity and excels above and beyond requirements
+
+8. Provide a brief justification (1-2 sentences) for selecting that category: I expanded on the assignment by figuring out how to send multiple inputs at once, parsing them appropriately, and storing and displaying them. In addition, I played with how to style from the server side to make the presentation more professional and added some field validation.
