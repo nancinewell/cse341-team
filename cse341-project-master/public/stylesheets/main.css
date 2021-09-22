@@ -41,3 +41,41 @@
   width: 5rem;
   height: 5rem;
 }
+
+legend{
+  color: #fff;
+}
+
+form{
+  margin-top: 7rem;
+}
+fieldset{
+  display: grid;
+  grid-template-columns: .5fr 1fr 1fr;
+  grid-gap: 3rem;
+}
+
+label {
+  text-align: center;
+  padding: .8rem;
+  font-size: 2rem;
+}
+.btn {
+  color: #0065bd;
+  font-weight: bold; 
+  padding: .75rem;
+}
+
+li{
+  list-style: none;
+}
+input{
+  color: #000;
+  padding: .8rem;
+  border-radius: 5px;
+}
+
+#message{
+  text-align: center;
+  grid-column: 1 / span 3;
+}
