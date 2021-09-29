@@ -10,12 +10,7 @@ var fs = require('fs');
 
 var path = require('path');
 
-var request = require("request"); // const p = path.join(
-//   path.dirname(process.mainModule.filename),
-//   'data',
-//   'products.json'
-// );
-
+var request = require("request");
 
 var url = "https://byui-cse.github.io/cse341-course/lesson03/items.json";
 
