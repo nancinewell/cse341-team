@@ -2,11 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const request = require("request");
 
-// const p = path.join(
-//   path.dirname(process.mainModule.filename),
-//   'data',
-//   'products.json'
-// );
 const url="https://byui-cse.github.io/cse341-course/lesson03/items.json";  
 
 const getProductsFromFile = cb => {
