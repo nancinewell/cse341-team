@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@200;400;700&display=swap');
+
 .jumbotron {
   background: #0065bd;
   color: white;
@@ -78,4 +80,104 @@ input{
 #message{
   text-align: center;
   grid-column: 1 / span 3;
+}
+
+
+/* * * * * * * * * * * * Week 3 * * * * * * * * * * */
+.no-products {
+  color: #313b44;
+}
+
+section.branding{
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+}
+header .logo-img{
+  background-image: url("../images/viking-skull.jpg");
+  height: 4rem;
+  width: 4rem;
+  padding: .5rem;
+  background-size: cover;
+  border-radius: 10px;
+  margin: 1rem;
+}
+.logo-link{
+  margin: 0;
+  padding: 0;
+}
+h1{
+  padding-top: 1rem;
+  color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 2px;
+}
+/* * * * * * * * * * * * ERRORS * * * * * * * * * * */
+.error-img{
+  background-image: url("../images/viking-skull.jpg");
+  height: 20rem;
+  width: 20rem;
+  padding: 1rem;
+  background-size: cover;
+  margin: 2rem auto;
+
+}
+
+.error-h1{
+  text-align: center;
+  color: #313b44;
+}
+/* * * * * * * * * * * * SEARCH * * * * * * * * * * */
+.search-bar input, .search-bar button{
+  border-radius: 10px;
+  padding: .5rem;
+  margin-right: .5rem;
+}
+.search-bar input{
+  width: 30rem;
+}
+
+.search-bar button{
+  background-color: #313b44;
+}
+
+/* * * * * * * * * * * * PRODUCT GRID DISPLAY * * * * * * * * * * */
+.grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card{
+  width: 40rem;
+  margin-top: 2rem;
+  box-shadow: 5px 5px 15px #adbec8;
+  background-color: #fff;
+}
+
+.card__header{
+  padding: 1rem;
+  background-color: #313b44;
+}
+
+.card__header .product_title {
+  color: #fff;
+}
+
+.card__image img{
+  width: 100%;
+}
+
+.card__content{
+  padding: 1em;
+}
+
+p.product__description{
+  color: #313b44;
+}
+
+h2.product__price{
+  color: #313b44;
 }

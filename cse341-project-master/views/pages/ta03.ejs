@@ -12,7 +12,33 @@
         <h1>
           <%= title %>
         </h1>
-        <p>This is the placeholder for Team Activity 03</p>
+        <section class="search-bar">
+          <form action="/ta03/search" method="post">
+              <input type="text" name="search" id="search">
+              <button type="submit">Search</button>
+          </form>
+        </section>
+        <% if (prods.length > 0) { %>
+          <div class="grid">
+              <% for (let product of prods) { %>
+                  <article class="card product-item">
+                      <header class="card__header">
+                          <h1 class="product__title"><%= product.name %></h1>
+                      </header>
+                      <div class="card__image">
+                          <img src="<%= product.imageUrl %>"
+                              alt="<%= product.name %>">
+                      </div>
+                      <div class="card__content">
+                          <h2 class="product__price">$<%= product.price %></h2>
+                          <p class="product__description"><%= product.description %></p>
+                      </div>
+                  </article>
+              <% } %>
+          </div>
+      <% } else { %>
+          <h1 class="no-products">No Products Found!</h1>
+      <% } %>
       </div>
     </div>
     <div class="container">
