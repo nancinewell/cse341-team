@@ -3,6 +3,34 @@
 
 <head>
   <% include ../includes/header.ejs %>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      max-width: 600px;
+      margin: 1 rem 0;
+    }
+    form div{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      margin: 1rem;
+    }
+  <% if(style == "Dark"){%>
+    body{
+      background-color: #000;
+      color: #fff;
+    }
+
+    button{
+      color: #000;
+    }
+  <% } %>
+
+  </style>
 </head>
 
 <body>
@@ -16,8 +44,33 @@
       </div>
     </div>
     <div class="container">
+      <form action="/ta04/change-style" method="post">
+        <div id="style">
+          <label for="style-light">Light</label>
+          <input id="style-light" type="radio" value="Light" name="style">
+        </div>
+        <div>
+          <label for="style-dark">Dark</label>
+          <input id="style-dark" type="radio" value="Dark" name="style">
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      <p>Current theme is: <%= style %></p>
 
+
+      <form action="/ta04/counter" method="post">
+        <input type="hidden" value="1" name="counter">
+        <button type="submit">Increment By 1</button>
+      </form>
+      <form action="/ta04/counter" method="post">
+        <input type="hidden" value="-1" name="counter">
+        <button type="submit">Decrement By 1</button>
+      </form>
+      <p>Current counter value is: <%= counter %></p>
+
+      <a href="/ta04/reset">Reset</a>
     </div>
+
 
 
 </body>

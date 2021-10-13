@@ -12,9 +12,12 @@
     "prove01": "nodemon prove01.js"
   },
   "dependencies": {
+    "connect-mongodb-session": "^3.1.1",
+    "cors": "^2.8.5",
     "ejs": "^2.5.6",
     "express": "^4.17.1",
     "express-handlebars": "^3.0.2",
+    "express-session": "^1.17.2",
     "nodemon": "^2.0.12",
     "pug": "^2.0.4"
   },
